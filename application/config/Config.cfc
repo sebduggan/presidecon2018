@@ -18,5 +18,18 @@ component extends="preside.system.config.Config" {
 		settings.features.websiteUsers.enabled = false;
 
 		settings.adminSideBarItems.append( "leagues" );
+
+		settings.assetManager.derivatives.film_poster_medium = {
+			  permissions = "inherit"
+			, transformations = [
+				{ method="Resize", args={ height=200 } }
+			]
+		};
+		settings.assetManager.derivatives.film_poster_large = {
+			  permissions = "inherit"
+			, transformations = [
+				{ method="Resize", args={ width=300 } }
+			]
+		};
 	}
 }

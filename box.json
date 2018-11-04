@@ -3,12 +3,14 @@
     "version":"1.0.0",
     "author":"Seb Duggan",
     "slug":"presidecon2018",
-    "createPackageDirectory" : false,
+    "createPackageDirectory":false,
     "private":true,
     "installPaths":{
-        "presidecms":"preside"
+        "presidecms":"preside",
+        "preside-ext-starwars":"application/extensions/preside-ext-starwars"
     },
     "dependencies":{
-        "presidecms":"stable"
+        "presidecms":"stable",
+        "preside-ext-starwars":"^1.2.2"
     }
 }
