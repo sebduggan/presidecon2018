@@ -7,14 +7,22 @@ component {
 		// no crumb
 	}
 
+	private void function preAddRecordAction( event, rc, prc, args={} ) {
+		leagueTablesService.validateUrlAndSelector( args.validationResult, args.formData );
+	}
+	private void function preCloneRecordAction( event, rc, prc, args={} ) {
+		leagueTablesService.validateUrlAndSelector( args.validationResult, args.formData );
+	}
+	private void function preEditRecordAction( event, rc, prc, args={} ) {
+		leagueTablesService.validateUrlAndSelector( args.validationResult, args.formData );
+	}
+
 	private void function postAddRecordAction( event, rc, prc, args={} ) {
 		leagueTablesService.updateLeagueTable( args.newId );
 	}
-
 	private void function postCloneRecordAction( event, rc, prc, args={} ) {
 		leagueTablesService.updateLeagueTable( args.newId );
 	}
-
 	private void function postEditRecordAction( event, rc, prc, args={} ) {
 		leagueTablesService.updateLeagueTable( args.formData.id );
 	}

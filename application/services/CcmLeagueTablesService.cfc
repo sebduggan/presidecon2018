@@ -6,6 +6,7 @@
 component {
 
 	public any function init() {
+		_setJSoup();
 		return this;
 	}
 
@@ -38,8 +39,7 @@ component {
 
 	public any function updateLeagueTable( required string id ) {
 		var league     = $getPresideObject( "ccm_league" ).selectData( id=arguments.id );
-		var jSoup      = createObject( "java", "org.jsoup.Jsoup", "/app/lib/jsoup/jsoup-1.9.1.jar" );
-		var doc        = jSoup.connect( league.source_url ).userAgent( "Mozilla" ).timeout( 10000 ).get();
+		var doc        = _getJSoup().connect( league.source_url ).userAgent( "Mozilla" ).timeout( 10000 ).get();
 		var rows       = doc.select( league.table_rows_selector );
 		var currentRow = 1;
 
@@ -77,13 +77,42 @@ component {
 		return true;
 	}
 
+	public void function validateUrlAndSelector( required any validationResult, required struct formData ) {
+		var sourceUrl = arguments.formData.source_url          ?: "";
+		var selector  = arguments.formData.table_rows_selector ?: "";
+
+		if ( sourceUrl == "" || selector == "" ) {
+			return;
+		}
+
+		try {
+			var doc = _getJSoup().connect( sourceUrl ).userAgent( "Mozilla" ).timeout( 10000 ).get();
+		}
+		catch( any e ) {
+			arguments.validationResult.addError( "source_url", "Source URL could not be reached" );
+			return;
+		}
+
+		var rows = doc.select( selector );
+		if ( !rows.len() || rows[ 1 ].nodeName() != "tr" ) {
+			arguments.validationResult.addError( "table_rows_selector", "Table rows selector did not return any rows" );
+		}
+	}
+
 // PRIVATE HELPERS
 	private string function _getCellValue( required any row, required any col, string subselector="" ) {
 		if ( val( arguments.col ) == 0 ) {
 			return "";
 		}
-
 		return arguments.row.select( "td:eq(#arguments.col-1#) #arguments.subselector#" ).text();
+	}
+
+// GETTERS & SETTERS
+	private void function _setJSoup() {
+		_jSoup = createObject( "java", "org.jsoup.Jsoup", "/app/lib/jsoup/jsoup-1.9.1.jar" );
+	}
+	private any function _getJSoup() {
+		return _jSoup;
 	}
 
 }
