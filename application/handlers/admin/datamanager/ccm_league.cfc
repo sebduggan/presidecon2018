@@ -7,6 +7,53 @@ component {
 		// no crumb
 	}
 
+	// private boolean function checkPermission( event, rc, prc, args={} ){
+	// 	var key           = args.key          ?: "";
+	// 	var throwOnError  = args.throwOnError ?: "";
+	// 	var isPermitted   = true;
+	// 	var record        = prc.record ?: "";
+
+	// 	if ( listFindNoCase( "add,edit,clone,delete", key ) && dayOfWeek( now() ) == 4 ) {
+	// 		// don't allow adding or editing on a Wednesday!
+	// 		isPermitted = false;
+	// 	}
+
+	// 	if ( isPermitted ) {
+	// 		isPermitted = hasCmsPermission( permissionKey="datamanager.#key#" );
+	// 	}
+
+	// 	if ( throwOnError && !isPermitted ) {
+	// 		event.adminAccessDenied();
+	// 	}
+
+	// 	return isPermitted;
+	// }
+
+
+
+	// private boolean function isOperationAllowed( event, rc, prc, args={} ) {
+	// 	var operation = args.operation ?: "";
+
+	// 	if ( listFindNoCase( "add,edit,clone", operation ) && dayOfWeek( now() ) == 1 ) {
+	// 		// don't allow adding or editing on a Wednesday!
+	// 		return false;
+	// 	}
+	// 	return operation != "delete";
+	// }
+
+
+
+
+	// private string function preRenderListing( event, rc, prc, args={} ) {
+	// 	return '<p class="alert alert-danger">You can put a warning here.</p>';
+	// }
+
+	// private string function listingViewlet( event, rc, prc, args={} ) {
+	// 	return '<p class="alert alert-danger">Listing has been completely overridden!</p>';
+	// }
+
+
+
 	// private void function preAddRecordAction( event, rc, prc, args={} ) {
 	// 	leagueTablesService.validateUrlAndSelector( args.validationResult, args.formData );
 	// }
