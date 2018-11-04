@@ -1,5 +1,6 @@
 /**
  * @noLabel
+ * @versioned                   false
  * @dataManagerGroup            CCM
  * @dataManagerGridFields       league,team_name,sort_order
  * @dataManagerDefaultSortOrder league.team, sort_order

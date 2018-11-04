@@ -1,4 +1,4 @@
-<cfscript>
+<!--- <cfscript>
 	if ( hasCmsPermission( "leagues.read" ) ) {
 		WriteOutput( renderView(
 			  view = "/admin/layout/sidebar/_menuItem"
@@ -10,4 +10,4 @@
 			  }
 		) );
 	}
-</cfscript>
+</cfscript> --->

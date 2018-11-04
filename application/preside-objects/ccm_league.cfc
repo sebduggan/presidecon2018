@@ -1,4 +1,5 @@
 /**
+ * @versioned                   false
  * @dataManagerEnabled          true
  * @dataManagerGridFields       season,team,name
  * @dataManagerDefaultSortOrder season desc,team
