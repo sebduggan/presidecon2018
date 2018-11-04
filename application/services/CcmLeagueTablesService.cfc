@@ -39,7 +39,9 @@ component {
 
 	public any function updateLeagueTable( required string id ) {
 		var league     = $getPresideObject( "ccm_league" ).selectData( id=arguments.id );
+
 		var doc        = _getJSoup().connect( league.source_url ).userAgent( "Mozilla" ).timeout( 10000 ).get();
+		// var doc        = _getJSoup().parse( _getLocalFile( league.source_url ), "UTF-8", league.source_url );
 		var rows       = doc.select( league.table_rows_selector );
 		var currentRow = 1;
 
@@ -87,6 +89,7 @@ component {
 
 		try {
 			var doc = _getJSoup().connect( sourceUrl ).userAgent( "Mozilla" ).timeout( 10000 ).get();
+			// var doc = _getJSoup().parse( _getLocalFile( sourceUrl ), "UTF-8", sourceUrl );
 		}
 		catch( any e ) {
 			arguments.validationResult.addError( "source_url", "Source URL could not be reached" );
@@ -105,6 +108,13 @@ component {
 			return "";
 		}
 		return arguments.row.select( "td:eq(#arguments.col-1#) #arguments.subselector#" ).text();
+	}
+
+	private any function _getLocalFile( required string sourceUrl ) {
+		var filename = reReplaceNoCase( arguments.sourceUrl, "[^a-z0-9]+", "-", "all" );
+		var javaFile = createObject( "java", "java.io.File" );
+
+		return javaFile.init( "/Developer/pixl8/presidecon-2018/assets/jsoup/#filename#.html" );
 	}
 
 // GETTERS & SETTERS
