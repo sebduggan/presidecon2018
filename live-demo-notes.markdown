@@ -46,6 +46,10 @@
 - Enable post[Add|Edit|Clone]RecordAction. Gets passed objectName, formData, validationResult (and existingRecord). Runs after record is saved.
 - Calls the updateLeagueTable() method in the service when the league record is saved. Doesn't return a value, so default action (redirect to listing/record) will follow.
 - If desired, could do a custom redirect using setNextEvent()
+- Clone record:
+	- Hampshire League: Regional Division 1 South East
+	- 3rd XI
+	- https://www.hantscl.com/leagues/RD1SE18/
 
 ## Use preRenderRecord() to add league table at top
 - We should now have the scraped league table data in Preside - we could look at this in the Data Manager, but we can do better than this
