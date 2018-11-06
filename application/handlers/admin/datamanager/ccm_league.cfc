@@ -1,4 +1,4 @@
-component {
+component extends="preside.system.base.AdminHandler" {
 
 	property name="leagueTablesService" inject="CcmLeagueTablesService";
 	property name="messageBox"          inject="messagebox@cbmessagebox";
@@ -6,6 +6,19 @@ component {
 	private void function rootBreadcrumb() {
 		// no crumb
 	}
+
+
+
+	// private void function preLayoutRender( event, rc, prc, args={} ) {
+	// 	prc.pageTitle = "Custom page title";
+	// 	prc.pageIcon  = "fa-glass";
+	// }
+	// private void function preLayoutRenderForEditRecord( event, rc, prc, args={} ) {
+	// 	prc.pageTitle = "Custom edit page title";
+	// 	prc.pageIcon  = "fa-beer";
+	// }
+
+
 
 	// private boolean function checkPermission( event, rc, prc, args={} ){
 	// 	var key           = args.key          ?: "";
@@ -138,6 +151,47 @@ component {
 	// 	leagueTablesService.updateLeagueTable( id );
 	// 	messageBox.info( "League table successfully updated." );
 	// 	setNextEvent( url=event.buildAdminLink( objectName="ccm_league", recordId=id ) );
+	// }
+
+
+
+	// private void function extraTopRightButtonsForViewRecord( event, rc, prc, args={} ) {
+	// 	var objectName = args.objectName ?: "";
+	// 	var recordId   = prc.recordId    ?: "";
+
+	// 	args.actions = args.actions ?: [];
+	// 	args.actions.prepend( {
+	// 		  link      = event.buildAdminLink( objectName=objectName, operation="viewLeagueTableSource", recordId=recordId )
+	// 		, btnClass  = "btn-info"
+	// 		, iconClass = "fa-globe"
+	// 		, title     = "Table source"
+	// 	} );
+	// }
+
+	// private string function buildViewLeagueTableSourceLink( event, rc, prc, args={} ) {
+	// 	var qs = "id=#( args.recordId ?: "" )#";
+
+	// 	if ( Len( Trim( args.queryString ?: "" ) ) ) {
+	// 		qs &= "&#args.queryString#";
+	// 	}
+
+	// 	return event.buildAdminLink( linkto="datamanager.ccm_league.viewLeagueTableSource", querystring=qs );
+	// }
+
+	// public void function viewLeagueTableSource( event, rc, prc, args={} ) {
+	// 	event.initializeDatamanagerPage(
+	// 		  objectName = "ccm_league"
+	// 		, recordId   = rc.id ?: ""
+	// 	);
+	// 	event.addAdminBreadCrumb(
+	// 		  title = "League table source page"
+	// 		, link  = ""
+	// 	);
+
+	// 	prc.leagueSourceUrl = prc.record.source_url;
+	// 	prc.pageTitle       = "League table source";
+	// 	prc.pageSubTitle    = prc.recordLabel;
+	// 	prc.pageIcon        = "fa-globe";
 	// }
 
 }
