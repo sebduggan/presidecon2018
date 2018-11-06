@@ -1,9 +1,12 @@
 <cfscript>
-	leagueSourceUrl = prc.leagueSourceUrl ?: "";
+	leagueSourceUrl           = prc.leagueSourceUrl           ?: "";
+	// postViewLeagueTableSource = prc.postViewLeagueTableSource ?: "";
 </cfscript>
 
-<cfif len( leagueSourceUrl )>
-	<cfoutput>
-		<iframe src="#leagueSourceUrl#" width="100%" height="600">
-	</cfoutput>
-</cfif>
+<cfoutput>
+	<cfif len( leagueSourceUrl )>
+		<iframe src="#leagueSourceUrl#" width="100%" height="600"></iframe>
+	</cfif>
+
+	<!--- #postViewLeagueTableSource# --->
+</cfoutput>

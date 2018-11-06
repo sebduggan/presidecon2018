@@ -1,69 +1,12 @@
 component extends="preside.system.base.AdminHandler" {
 
-	property name="leagueTablesService" inject="CcmLeagueTablesService";
-	property name="messageBox"          inject="messagebox@cbmessagebox";
+	property name="leagueTablesService"             inject="CcmLeagueTablesService";
+	property name="datamanagerCustomizationService" inject="DatamanagerCustomizationService";
+	property name="messageBox"                      inject="messagebox@cbmessagebox";
 
 	private void function rootBreadcrumb() {
 		// no crumb
 	}
-
-
-
-	// private void function preLayoutRender( event, rc, prc, args={} ) {
-	// 	prc.pageTitle = "Custom page title";
-	// 	prc.pageIcon  = "fa-glass";
-	// }
-	// private void function preLayoutRenderForEditRecord( event, rc, prc, args={} ) {
-	// 	prc.pageTitle = "Custom edit page title";
-	// 	prc.pageIcon  = "fa-beer";
-	// }
-
-
-
-	// private boolean function checkPermission( event, rc, prc, args={} ){
-	// 	var key           = args.key          ?: "";
-	// 	var throwOnError  = args.throwOnError ?: "";
-	// 	var isPermitted   = true;
-	// 	var record        = prc.record ?: "";
-
-	// 	if ( listFindNoCase( "add,edit,clone,delete", key ) && dayOfWeek( now() ) == 4 ) {
-	// 		// don't allow adding or editing on a Wednesday!
-	// 		isPermitted = false;
-	// 	}
-
-	// 	if ( isPermitted ) {
-	// 		isPermitted = hasCmsPermission( permissionKey="datamanager.#key#" );
-	// 	}
-
-	// 	if ( throwOnError && !isPermitted ) {
-	// 		event.adminAccessDenied();
-	// 	}
-
-	// 	return isPermitted;
-	// }
-
-
-
-	// private boolean function isOperationAllowed( event, rc, prc, args={} ) {
-	// 	var operation = args.operation ?: "";
-
-	// 	if ( listFindNoCase( "add,edit,clone", operation ) && dayOfWeek( now() ) == 1 ) {
-	// 		// don't allow adding or editing on a Wednesday!
-	// 		return false;
-	// 	}
-	// 	return operation != "delete";
-	// }
-
-
-
-
-	// private string function preRenderListing( event, rc, prc, args={} ) {
-	// 	return '<p class="alert alert-danger">You can put a warning here.</p>';
-	// }
-
-	// private string function listingViewlet( event, rc, prc, args={} ) {
-	// 	return '<p class="alert alert-danger">Listing has been completely overridden!</p>';
-	// }
 
 
 
@@ -91,13 +34,6 @@ component extends="preside.system.base.AdminHandler" {
 
 
 
-	// private string function renderRecord( event, rc, prc, args={} ) {
-	// 	args.league      = leagueTablesService.getLeague( args.recordId );
-	// 	args.leagueTable = leagueTablesService.getLeagueTable( args.recordId );
-
-	// 	return renderView( view="/admin/league/leagueTable", args=args );
-	// }
-
 	// private string function preRenderRecord( event, rc, prc, args={} ) {
 	// 	args.league      = leagueTablesService.getLeague( args.recordId );
 	// 	args.leagueTable = leagueTablesService.getLeagueTable( args.recordId );
@@ -107,17 +43,21 @@ component extends="preside.system.base.AdminHandler" {
 
 
 
-	// private void function extraRecordActionsForGridListing( event, rc, prc, args={} ) {
-	// 	var objectName = args.objectName ?: "";
-	// 	var record     = args.record     ?: {};
-	// 	var recordId   = record.id       ?: "";
+	// private string function preRenderListing( event, rc, prc, args={} ) {
+	// 	return '<p class="alert alert-danger">You can put a warning here.</p>';
+	// }
 
-	// 	args.actions = args.actions ?: [];
-	// 	args.actions.insertAt( 2, {
-	// 		  link  = event.buildAdminLink( objectName=objectName, operation="refreshLeagueTable", recordid=recordId )
-	// 		, icon  = "fa-refresh"
-	// 		, title = "Refresh table"
-	// 	} );
+	// private string function listingViewlet( event, rc, prc, args={} ) {
+	// 	return '<p class="alert alert-danger">Listing has been completely overridden!</p>';
+	// }
+
+
+
+	// private string function renderRecord( event, rc, prc, args={} ) {
+	// 	args.league      = leagueTablesService.getLeague( args.recordId );
+	// 	args.leagueTable = leagueTablesService.getLeagueTable( args.recordId );
+
+	// 	return renderView( view="/admin/league/leagueTable", args=args );
 	// }
 
 
@@ -188,10 +128,88 @@ component extends="preside.system.base.AdminHandler" {
 	// 		, link  = ""
 	// 	);
 
+	// 	// var objectName = "ccm_league";
+	// 	// if ( datamanagerCustomizationService.objectHasCustomization( objectName, "postViewLeagueTableSource" ) ) {
+	// 	// 	prc.postViewLeagueTableSource = datamanagerCustomizationService.runCustomization(
+	// 	// 		  objectName = objectName
+	// 	// 		, action     = "postViewLeagueTableSource"
+	// 	// 		, args       = args
+	// 	// 	);
+	// 	// }
+
 	// 	prc.leagueSourceUrl = prc.record.source_url;
 	// 	prc.pageTitle       = "League table source";
 	// 	prc.pageSubTitle    = prc.recordLabel;
 	// 	prc.pageIcon        = "fa-globe";
 	// }
+
+
+
+	// private string function postViewLeagueTableSource( event, rc, prc, args={} ) {
+	// 	return "<p>Content returned by postViewLeagueTableSource customisation...</p>";
+	// }
+
+
+
+	// private void function extraRecordActionsForGridListing( event, rc, prc, args={} ) {
+	// 	var objectName = args.objectName ?: "";
+	// 	var record     = args.record     ?: {};
+	// 	var recordId   = record.id       ?: "";
+
+	// 	args.actions = args.actions ?: [];
+	// 	args.actions.insertAt( 2, {
+	// 		  link  = event.buildAdminLink( objectName=objectName, operation="refreshLeagueTable", recordid=recordId )
+	// 		, icon  = "fa-refresh"
+	// 		, title = "Refresh table"
+	// 	} );
+	// }
+
+
+
+	// private void function preLayoutRender( event, rc, prc, args={} ) {
+	// 	prc.pageTitle = "Custom page title";
+	// 	prc.pageIcon  = "fa-glass";
+	// }
+	// private void function preLayoutRenderForEditRecord( event, rc, prc, args={} ) {
+	// 	prc.pageTitle = "Custom edit page title";
+	// 	prc.pageIcon  = "fa-beer";
+	// }
+
+
+
+	// private boolean function checkPermission( event, rc, prc, args={} ){
+	// 	var key           = args.key          ?: "";
+	// 	var throwOnError  = args.throwOnError ?: "";
+	// 	var isPermitted   = true;
+	// 	var record        = prc.record ?: "";
+
+	// 	if ( listFindNoCase( "add,edit,clone,delete", key ) && dayOfWeek( now() ) == 4 ) {
+	// 		// don't allow adding or editing on a Wednesday!
+	// 		isPermitted = false;
+	// 	}
+
+	// 	if ( isPermitted ) {
+	// 		isPermitted = hasCmsPermission( permissionKey="datamanager.#key#" );
+	// 	}
+
+	// 	if ( throwOnError && !isPermitted ) {
+	// 		event.adminAccessDenied();
+	// 	}
+
+	// 	return isPermitted;
+	// }
+
+
+
+	// private boolean function isOperationAllowed( event, rc, prc, args={} ) {
+	// 	var operation = args.operation ?: "";
+
+	// 	if ( listFindNoCase( "add,edit,clone", operation ) && dayOfWeek( now() ) == 1 ) {
+	// 		// don't allow adding or editing on a Wednesday!
+	// 		return false;
+	// 	}
+	// 	return operation != "delete";
+	// }
+
 
 }
